@@ -28,7 +28,7 @@ class  CreateDress(APIView):
     def delete(self,request,pk):
         obj=Dress.objects.get(pk=pk)
         obj.delete()
-        return Response({"staus":"Delete sucessfully"})
+        return Response({"staus":"Delete item sucessfully"})
 
 class  CreateJwellery(APIView):
     def post(self,request):

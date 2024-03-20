@@ -8,15 +8,19 @@ choice=(
     ('lehenga','lehenga'),
    
 )
-
+category = (
+    ("Women's","Women's"),
+    ("Men's","Men's"),
+    ("Kid's","Kid's")
+)
 class Dress(models.Model):
-    name=models.CharField(max_length=250,null=True,blank=True)
+    category=models.CharField(max_length=250,choices=category, null=True,blank=True)
     description=models.TextField(null=True,blank=True)
     price = models.IntegerField(null=True,blank=True)
     type=models.CharField(max_length=250,choices=choice)
     image = models.ImageField(upload_to='dresses/', null=True, blank=True)
     def __str__(self):
-        return self.name 
+        return str(self.id) 
     
 
 class Jewellry(models.Model):

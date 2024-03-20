@@ -1,0 +1,70 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 5%;
+  background: #f6f4f4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo1 {
+  font-size: 3vw;
+  color: rgb(30, 29, 29);
+  text-decoration: none;
+  font-weight: 800;
+} */
+
+/* .navbar1 {
+  overflow: hidden;
+  position: fixed;
+  margin-left: 590px;
+} */
+/* .navbar1 a {
+  font-size: 2vw;
+  color: rgb(12, 12, 12);
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 3vw;
+  transition: transform 0.3s;
+}
+
+.navbar1 a:hover {
+  color: rgb(255, 0, 47);
+} */
+
+
+.abc{
+  margin: 150px 0 0 700px;
+  font: italic small-caps bold 12px/30px Georgia, serif;
+}
+
+.para{
+  margin: 40px 0 0 100px;
+  font: italic small-caps bold 12px/30px Georgia, serif;
+}
+span{
+  font-size: 250px;
+  margin: 0 0 0 350px;
+  font: italic small-caps bold 30px/30px Georgia, serif;
+}
+
+.line{
+  font-size: 250px;
+  margin: 0 0 0 100px;
+  font: italic small-caps bold 30px/30px Georgia, serif;
+}
+
+
+
+ 
+

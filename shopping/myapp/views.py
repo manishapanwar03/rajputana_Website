@@ -26,7 +26,7 @@ class  CreateDress(APIView):
             return Response(serilaizer.data,status=status.HTTP_200_OK )
     
     def delete(self,request,pk=None):
-        obj=get_object_or_404(Dress,pk=pk)
+        obj=Dress.objects.get(pk=pk)
         obj.delete()
         return Response({"staus":"Delete sucessfully"})
 
@@ -50,7 +50,7 @@ class  CreateJwellery(APIView):
             return Response(serializer.data,status=status.HTTP_200_OK )
         
     def delete(self,request,pk=None):
-        obj=get_object_or_404(Dress,pk=pk)
+        obj=Dress.objects.get(pk=pk)
         obj.delete()
         return Response({"status":"Delete sucessfully"})
     

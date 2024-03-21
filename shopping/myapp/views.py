@@ -25,10 +25,10 @@ class  CreateDress(APIView):
             serilaizer = DressSerializer(queryset,many=True)
             return Response(serilaizer.data,status=status.HTTP_200_OK )
     
-    def delete(self,request,pk=None):
+    def delete(self,request,pk):
         obj=Dress.objects.get(pk=pk)
         obj.delete()
-        return Response({"staus":"Delete sucessfully"})
+        return Response({"staus":"Delete item sucessfully"})
 
 class  CreateJwellery(APIView):
     def post(self,request):
@@ -49,7 +49,7 @@ class  CreateJwellery(APIView):
             serializer = JewellerySerializer(queryset,many=True)
             return Response(serializer.data,status=status.HTTP_200_OK )
         
-    def delete(self,request,pk=None):
+    def delete(self,request,pk):
         obj=Dress.objects.get(pk=pk)
         obj.delete()
         return Response({"status":"Delete sucessfully"})

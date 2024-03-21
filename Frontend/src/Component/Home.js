@@ -217,13 +217,8 @@ const HomeScreen = () => {
 
       {/* <div className="card1-container">
         <div className="card1">
-<<<<<<< Updated upstream
           {jewellery.map((jewellery) => {
             return (
-=======
-          {/* {jewellery.map((jewellery)=>{
-            return(
->>>>>>> Stashed changes
               <>
                 <li>
                   {jewellery.name}
@@ -231,7 +226,6 @@ const HomeScreen = () => {
                   <img src={`http://127.0.0.1:8000${jewellery.image}`} alt="" />
                 </li>
               </>
-<<<<<<< Updated upstream
             );
           })}
         </div> */}
@@ -253,35 +247,6 @@ const HomeScreen = () => {
           ))}
         </div>
       {/* </div> */}
-=======
-            )
-
-          })} */}
-          <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2022-12-26-at-10123-pm-754508_m.jpeg?v=503"
-            alt="Image 1"
-          />
-          <div className="card1-text">RAINA KANTHI SET</div>
-          <div className="card1-text">₹199.00</div>
-        </div>
-        <div className="card1">
-          <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2022-12-23-at-51607-pm-560546_m.jpeg?v=503"
-            alt="Image 2"
-          />
-          <div className="card1-text">SOORAJ JADAU RING</div>
-          <div className="card1-text">₹149.00</div>
-        </div>
-        <div className="card1">
-          <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2022-12-23-at-51607-pm-560546_m.jpeg?v=503"
-            alt="Image 3"
-          />
-          <div className="card1-text">BINDI MEHRI</div>
-          <div className="card1-text">₹249.00</div>
-        </div>
-      </div>
->>>>>>> Stashed changes
     </>
   );
 };

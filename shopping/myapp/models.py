@@ -3,9 +3,10 @@ from django.db import models
 
 # Create your models here.
 choice=(
-    ('sare','sare'),
-    ('poshak','poshak'),
-    ('lehenga','lehenga'),
+    ('SAREE','SAREE'),
+    ('POSHAK','POSHAK'),
+    ('LEHENGA','LEHENGA'),
+    ('SUIT','SUIT'),
    
 )
 category = (

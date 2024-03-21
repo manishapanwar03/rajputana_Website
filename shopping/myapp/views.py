@@ -7,10 +7,14 @@ from rest_framework import status
 # Create your views here.
 class  CreateDress(APIView):
     def post(self,request):
-        data = request.data
-        serializer = DressSerializer(data=data)
+        data_ = request.data['data']
+        image_ = request.data['image']
+        serializer = DressSerializer(data=data_)
         if serializer.is_valid():
             serializer.save()
+            info = Dress.objects.get(id=serializer.data['id'])
+            info.image = image_
+            info.save()
             return Response(serializer.data,status=status.HTTP_200_OK)
         return Response(serializer.errors)
     

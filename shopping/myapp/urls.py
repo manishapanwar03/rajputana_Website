@@ -7,7 +7,7 @@ from django.conf import settings
 urlpatterns = [
     path('dress/', CreateDress.as_view(), name="dress"),
     path('dress/<int:pk>/', CreateDress.as_view(), name="dress_id"),
-    path('jewellary/', CreateJwellery.as_view(), name="dress"),
-    path('jewellary/<int:pk>/', CreateJwellery.as_view(), name="dress_id"),
+    path('jewellary/', Jwelleryview.as_view(), name="dress"),
+    path('jewellary/<int:pk>/', Jwelleryview.as_view(), name="dress_id"),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

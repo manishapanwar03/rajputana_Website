@@ -45,12 +45,12 @@ class  CreateJwellery(APIView):
             serializer = JewellerySerializer(obj)
             return Response(serializer.data,status=status.HTTP_200_OK )
         else:
-            queryset = Dress.objects.all()
+            queryset = Jewellry.objects.all()
             serializer = JewellerySerializer(queryset,many=True)
             return Response(serializer.data,status=status.HTTP_200_OK )
         
     def delete(self,request,pk=None):
-        obj=Dress.objects.get(pk=pk)
+        obj=Jewellry.objects.get(pk=pk)
         obj.delete()
         return Response({"status":"Delete sucessfully"})
     

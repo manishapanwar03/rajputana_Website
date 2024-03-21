@@ -1,62 +1,66 @@
-import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
+import React, { useEffect, useState } from "react";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import "../CSS/Women.css";
+import axios from "axios";
 
 const Women = () => {
+  const [women, setWomen] = useState([]);
+
+  const gettowomenImages = () => {
+    axios
+      .get("http://127.0.0.1:8000/dress/")
+      .then((res) => {
+        debugger;
+        setWomen(res.data);
+      })
+      .catch((error) => {
+        console.log("eror");
+      });
+  };
+
+  useEffect(() => {
+    gettowomenImages();
+  }, []);
   return (
     <div>
-      {/* <div>
-
-     <Carousel>
-        <div>
-          <img src="https://www.sonarajputiposhak.com/wp-content/uploads/2023/03/yuvti_Banner_1_1400x.webp" />
-        </div>
-        <div>
-          <img src="https://www.sonarajputiposhak.com/wp-content/uploads/2023/03/yuvti_Banner_1_1400x.webp" />
-        </div>
-        <div>
-          <img src="https://www.sonarajputiposhak.com/wp-content/uploads/2023/03/yuvti_Banner_1_1400x.webp" />
-        </div>
-      </Carousel>
-     </div> */}
-      <div
-        style={{
-          backgroundImage: `url("https://www.sonarajputiposhak.com/wp-content/uploads/2023/03/yuvti_Banner_1_1400x.webp")`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          textAlign: "center",
-          marginTop: "0px",
-        }}
-      >
-        <div
+      <div>
+        <img
+          className="img"
+          src="https://www.sonarajputiposhak.com/wp-content/uploads/2023/03/yuvti_Banner_1_1400x.webp"
+          alt="Banner 1"
+          style={{ marginTop: "70px", width: "100%", height: "auto" }}
+        />
+        <button
+          className="butonshop"
           style={{
-            // backgroundColor: "#000000a3",
-            height: "642px",
-            display: "flex",
-            justifyContent: "end",
-            width: "80%",
-            marginTop: "14px",
-            alignItems: "end",
+            position: "absolute",
+            top: "63%",
+            left: "73%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+            paddingLeft: "20px",
+            zIndex: "1",
+            width: "157px",
           }}
         >
-          <button
-            className="butonshop"
-            style={{ textAlign: "center", paddingLeft: "20px" }}
-          >
-            Shop Now
-            <ArrowRightAltIcon style={{ marginLeft: "20px" }} />{" "}
-          </button>
-        </div>
+          Shop Now
+          <ArrowRightAltIcon style={{ marginLeft: "20px" }} />
+        </button>
       </div>
 
       <div className="container1">
         <p className="p">POSHAKS</p>
       </div>
-      <div className="card1-container" style={{ height: "" }}>
-        <div className="card1">
+      <div className="card1-container">
+        {women.map((women) => (
+          <div className="card1">
+            <div className="card-text">
+              <p>{women.type}</p>
+              <img src={`http://127.0.0.1:8000${women.image}`} />
+            </div>
+          </div>
+        ))}
+        {/* <div className="card1">
           <img
             src="https://i.pinimg.com/550x/5a/5a/a9/5a5aa96d83eafca73ee3408708433428.jpg"
             alt="Image 1"
@@ -79,10 +83,10 @@ const Women = () => {
           />
           <div className="card1-text">TULSI POSHAK</div>
           <div className="card1-text">₹2950.00</div>
-        </div>
+        </div> */}
       </div>
 
-      <div className="card1-container">
+      {/* <div className="card1-container">
         <div className="card1">
           <img
             src="https://i.pinimg.com/236x/1d/28/fe/1d28fe5705669aa60d50b8ed76b8d8c1.jpg"
@@ -107,7 +111,7 @@ const Women = () => {
           <div className="card1-text">SHASHI POSHAK</div>
           <div className="card1-text">₹1599.00</div>
         </div>
-      </div>
+      </div> */}
       <div className="container1">
         <p className="p">SAREE'S</p>
       </div>

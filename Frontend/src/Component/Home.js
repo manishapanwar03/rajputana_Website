@@ -49,12 +49,15 @@ const HomeScreen = () => {
   }, []);
 
   const gettojewellery = () => {
-    axios.get("http://127.0.0.1:8000/jewellary/").then((response) => {
-      setJewellery(response.data);
-    })
-    .catch((error)=>{
-      console.log("Error fetching data:",error);
-    })
+    axios
+      .get("http://127.0.0.1:8000/jewellary/")
+      .then((response) => {
+        // debugger
+        setJewellery(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
   };
 
   return (
@@ -95,31 +98,25 @@ const HomeScreen = () => {
         <p className="p">POSHAKS</p>
       </div>
       <div className="card1-container">
-        <div className="card1">
-          {dress.map((option) => {
-            debugger
-            // let baseURL = "http://127.0.0.1:8000/";
-            // let image = baseURL + option.image;
-            // debugger;
-            return (
-              <li key={option.id}>
-                {option.image ? (
-                  <img
-                    src={`http://127.0.0.1:8000${option.image}`}
-                    alt="Dress"
-                  />
-                ) : (
-                  <p>No image available</p>
-                )}
-                <div className="card1-text">{option.description}</div>
+        {dress.map((option) => (
+          <div className="card1" key={option.id}>
+            {option.image ? (
+              <img
+                src={`http://127.0.0.1:8000${option.image}`}
+                alt={option.name || "Dress"}
+              />
+            ) : (
+              <p>No image available</p>
+            )}
+            <div className="card1-text">
+              {/* <p>{option.description}</p> */}
+              <p>{option.name}</p>
 
-                <div className="card1-text">{option.name}</div>
-                <div className="card1-text">{option.type}</div>
-                <div className="card1-text">{option.price}</div>
-              </li>
-            );
-          })}
-        </div>
+              <p>{option.type}</p>
+              <p>₹{option.price}</p>
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="card1-container">
@@ -218,40 +215,38 @@ const HomeScreen = () => {
         <p className="p">JEWELLERY</p>
       </div>
 
-      <div className="card1-container">
+      {/* <div className="card1-container">
         <div className="card1">
-          {jewellery.map((jewellery)=>{
-            return(
+          {jewellery.map((jewellery) => {
+            return (
               <>
-              <li><img src={jewellery.image}/></li>
+                <li>
+                  {jewellery.name}
+                  {jewellery.description}
+                  <img src={`http://127.0.0.1:8000${jewellery.image}`} alt="" />
+                </li>
               </>
-            )
-
+            );
           })}
-          {/* <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2022-12-26-at-10123-pm-754508_m.jpeg?v=503"
-            alt="Image 1"
-          />
-          <div className="card1-text">RAINA KANTHI SET</div>
-          <div className="card1-text">₹199.00</div> */}
-        </div>
-        {/* <div className="card1">
-          <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2022-12-23-at-51607-pm-560546_m.jpeg?v=503"
-            alt="Image 2"
-          />
-          <div className="card1-text">SOORAJ JADAU RING</div>
-          <div className="card1-text">₹149.00</div>
-        </div>
-        <div className="card1">
-          <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2022-12-23-at-51607-pm-560546_m.jpeg?v=503"
-            alt="Image 3"
-          />
-          <div className="card1-text">BINDI MEHRI</div>
-          <div className="card1-text">₹249.00</div>
         </div> */}
-      </div>
+        <div className="card1-container">
+          {jewellery.map((jewellery) => (
+            <div className="card1" key={jewellery.id}>
+              <img
+                src={`http://127.0.0.1:8000${jewellery.image}`}
+                alt={jewellery.name || "Dress"}
+              />
+              <div className="card1-text">
+                {/* <p>{option.description}</p> */}
+                <p>{jewellery.name}</p>
+
+                {/* <p>{jewellery.type}</p> */}
+                <p>₹{jewellery.price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      {/* </div> */}
     </>
   );
 };

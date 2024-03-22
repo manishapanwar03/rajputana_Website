@@ -39,7 +39,7 @@ Jewellrychoice=category = (
 class Jewellery(models.Model):
     category=models.CharField(choices=Jewellrychoice,max_length=250,null=True,blank=True)
     description=models.TextField(null=True,blank=True)
-    price = models.IntegerField(null=True,blank=True)
+    price = models.FloatField(null=True,blank=True)
     image = models.ImageField(upload_to='jewellry/', null=True, blank=True)
     
     

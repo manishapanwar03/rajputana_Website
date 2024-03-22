@@ -15,8 +15,8 @@ class  CreateDress(APIView):
             info = Dress.objects.get(id=serializer.data['id'])
             info.image = image_
             info.save()
-            return Response(serializer.data,status=status.HTTP_200_OK)
-        return Response(serializer.errors)
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
     def get(self,request,pk=None):
         # import pdb;pdb.set_trace()
@@ -28,6 +28,14 @@ class  CreateDress(APIView):
             queryset = Dress.objects.all()
             serilaizer = DressSerializer(queryset,many=True)
             return Response(serilaizer.data,status=status.HTTP_200_OK )
+        
+    def patch(self,request,pk):
+        queryset=Dress.objects.get(pk=pk)
+        serializer=DressSerializer(queryset,data=request.data,partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self,request,pk):
         obj=Dress.objects.get(pk=pk)
@@ -64,7 +72,7 @@ class Jwelleryview(APIView):
         return Response(serializer.errors)
         
     def delete(self,request,pk):
-        obj=Dress.objects.get(pk=pk)
+        obj=Jewellery.objects.get(pk=pk)
         obj.delete()
         return Response({"status":"Deletee sucessfully"})
     

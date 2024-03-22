@@ -11,8 +11,11 @@ class  CreateDress(APIView):
         serializer = DressSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status=status.HTTP_200_OK)
-        return Response(serializer.errors)
+            info = Dress.objects.get(id=serializer.data['id'])
+            info.image = image_
+            info.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
     def get(self,request,pk=None):
         # import pdb;pdb.set_trace()
@@ -24,6 +27,14 @@ class  CreateDress(APIView):
             queryset = Dress.objects.all()
             serilaizer = DressSerializer(queryset,many=True)
             return Response(serilaizer.data,status=status.HTTP_200_OK )
+        
+    def patch(self,request,pk):
+        queryset=Dress.objects.get(pk=pk)
+        serializer=DressSerializer(queryset,data=request.data,partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self,request,pk):
         obj=Dress.objects.get(pk=pk)
@@ -49,8 +60,17 @@ class  CreateJwellery(APIView):
             serializer = JewellerySerializer(queryset,many=True)
             return Response(serializer.data,status=status.HTTP_200_OK )
         
-    def delete(self,request,pk=None):
-        obj=Jewellry.objects.get(pk=pk)
+    
+    def patch(self,request,pk):
+        queryset=Jewellery.objects.get(pk=pk)
+        serializer=JewellerySerializer(queryset,data=request.data,partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        return Response(serializer.errors)
+        
+    def delete(self,request,pk):
+        obj=Jewellery.objects.get(pk=pk)
         obj.delete()
-        return Response({"status":"Delete sucessfully"})
+        return Response({"status":"Deletee sucessfully"})
     

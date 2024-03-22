@@ -66,5 +66,5 @@ class Jwelleryview(APIView):
     def delete(self,request,pk):
         obj=Dress.objects.get(pk=pk)
         obj.delete()
-        return Response({"status":"Delete sucessfully"})
+        return Response({"status":"Deletee sucessfully"})
     

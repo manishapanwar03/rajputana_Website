@@ -43,12 +43,16 @@ class  CreateDress(APIView):
 
 class  CreateJwellery(APIView):
     def post(self,request):
-        data = request.data
-        serializer = JewellerySerializer(data=data)
+        data_ = request.data['data']
+        image_ = request.data['image']
+        serializer = JewellerySerializer(data=data_)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status=status.HTTP_200_OK )
-        return Response(serializer.errors)
+            info = Jewellery.objects.get(id=serializer.data['id'])
+            info.image = image_
+            info.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
     def get(self,request,pk=None):
         if pk is not None:

@@ -3,9 +3,10 @@ from django.db import models
 
 # Create your models here.
 choice=(
-    ('sare','sare'),
-    ('poshak','poshak'),
-    ('lehenga','lehenga'),
+    ('SAREE','SAREE'),
+    ('POSHAK','POSHAK'),
+    ('LEHENGA','LEHENGA'),
+    ('SUIT','SUIT'),
    
 )
 category = (
@@ -13,6 +14,7 @@ category = (
     ("Men's","Men's"),
     ("Kid's","Kid's")
 )
+
 class Dress(models.Model):
     category=models.CharField(max_length=250,choices=category, null=True,blank=True)
     description=models.TextField(null=True,blank=True)
@@ -23,8 +25,19 @@ class Dress(models.Model):
         return str(self.id) 
     
 
-class Jewellry(models.Model):
-    name=models.CharField(max_length=250,null=True,blank=True)
+
+
+
+Jewellrychoice=category = (
+    ("Bracelets","Braceletss"),
+    ("Kada","kada"),
+    ("Necklace","Necklace"),
+    ("Earrings","Earrings")
+)
+
+
+class Jewellery(models.Model):
+    category=models.CharField(choices=Jewellrychoice,max_length=250,null=True,blank=True)
     description=models.TextField(null=True,blank=True)
     price = models.FloatField(null=True,blank=True)
     image = models.ImageField(upload_to='jewellry/', null=True, blank=True)

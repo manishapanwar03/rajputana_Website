@@ -7,8 +7,9 @@ from rest_framework import status
 # Create your views here.
 class  CreateDress(APIView):
     def post(self,request):
-        data = request.data
-        serializer = DressSerializer(data=data)
+        data_ = request.data['data']
+        image_ = request.data['image']
+        serializer = DressSerializer(data=data_)
         if serializer.is_valid():
             serializer.save()
             info = Dress.objects.get(id=serializer.data['id'])
@@ -41,7 +42,8 @@ class  CreateDress(APIView):
         obj.delete()
         return Response({"staus":"Delete item sucessfully"})
 
-class  CreateJwellery(APIView):
+class Jwelleryview(APIView):
+    
     def post(self,request):
         data_ = request.data['data']
         image_ = request.data['image']
@@ -56,11 +58,11 @@ class  CreateJwellery(APIView):
     
     def get(self,request,pk=None):
         if pk is not None:
-            obj = get_object_or_404(Jewellry)
-            serializer = JewellerySerializer(obj)
+            queryset = get_object_or_404(Jewellery,pk=pk)
+            serializer = JewellerySerializer(queryset)
             return Response(serializer.data,status=status.HTTP_200_OK )
         else:
-            queryset = Jewellry.objects.all()
+            queryset = Jewellery.objects.all()
             serializer = JewellerySerializer(queryset,many=True)
             return Response(serializer.data,status=status.HTTP_200_OK )
         

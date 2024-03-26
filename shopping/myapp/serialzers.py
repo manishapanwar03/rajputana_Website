@@ -8,5 +8,5 @@ class  DressSerializer(serializers.ModelSerializer):
 
 class JewellerySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Jewellry
+        model = Jewellery
         fields = '__all__'

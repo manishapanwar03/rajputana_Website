@@ -97,10 +97,8 @@ const HomeScreen = () => {
       <div className="card1-container">
         <div className="card1">
           {dress.map((option) => {
-            debugger
             // let baseURL = "http://127.0.0.1:8000/";
-            // let image = baseURL + option.image;
-            // debugger;
+            // let im age = baseURL + option.image;
             return (
               <li key={option.id}>
                 {option.image ? (
@@ -141,7 +139,8 @@ const HomeScreen = () => {
         </div>
         <div className="card1">
           <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2023-10-16-at-32823-pm-576135_m.jpeg?v=503"
+            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/proQkjhgfdsa555uuup[=q 
+            xzxziuytrew  ducts/whatsapp-image-2023-10-16-at-32823-pm-576135_m.jpeg?v=503"
             alt="Image 3"
           />
           <div className="card1-text">SHASHI POSHAK</div>

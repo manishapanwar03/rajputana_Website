@@ -23,8 +23,8 @@ function Navbar() {
         </nav>
       </header> */}
 
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link className="navbar-brand" to='/' style={{ color: " #780035" }}>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light" >
+        <Link className="navbar-brand" to='/' style={{color: "#780035" ,cursor:"pointer"}}>
           Fashion
         </Link>
         <button
@@ -41,8 +41,8 @@ function Navbar() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link className="nav-link" to="/">
+            <li className="nav-item active" style={{cursor:"pointer"}}>
+              <Link className="nav-link" to="/" >
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
@@ -100,7 +100,7 @@ function Navbar() {
               Search
             </button>
           </form>
-          <Link>
+          <Link to="/login">
           <PersonOutlineIcon style={{height:"50px"}}/>
           </Link>
           <Link>

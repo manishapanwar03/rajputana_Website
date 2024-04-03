@@ -1,0 +1,68 @@
+.loader {
+    margin-left: 561px;
+  width: 120px;
+  height: 20px;
+  -webkit-mask: radial-gradient(circle closest-side, #000 94%, #0000) left/20%
+    100%;
+  background: linear-gradient(#000 0 0) left/0% 100% no-repeat #ddd;
+  animation: l17 2s infinite steps(6);
+}
+@keyframes l17 {
+  100% {
+    background-size: 120% 100%;
+  }
+}
+
+.line-at-bot::before {
+  position: absolute;
+  content: "";
+  width: 200px;
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  background-color: #000;
+  margin: 0 auto;
+  right: 0;
+}
+.line-at-bot {
+  position: relative;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 90px;
+}
+.line-at-bot::after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  left: 0;
+  bottom: -4px;
+  background-color: #df1aab;
+  margin: 0 auto;
+  right: 0;
+  border-radius: 50%;
+  z-index: 1;
+  animation: myfirst1 10s linear 1s infinite alternate;
+}
+@keyframes myfirst1 {
+  0% {
+    left: 0px;
+    right: 200px;
+  }
+  25% {
+    left: 200px;
+    right: 0px;
+  }
+  50% {
+    left: 0px;
+    right: 200px;
+  }
+  75% {
+    left: 200px;
+    right: 0px;
+  }
+  100% {
+    left: 0px;
+    right: 200px;
+  }
+}

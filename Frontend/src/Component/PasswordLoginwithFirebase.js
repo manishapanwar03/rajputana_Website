@@ -9,6 +9,7 @@ import Navbar from './Navbar';
 import Women from './Women';
 import Men from './Men';
 import Jeweelry from './Jeweelry';
+import Login from './Login';
 
 const PasswprdLoginwithfirebase=()=> {
   return (
@@ -22,8 +23,8 @@ const PasswprdLoginwithfirebase=()=> {
         <Route path='/women' element={<Women/>}/>
         <Route path='/men' element={<Men/>}/>
         <Route path='/jeweelry' element={<Jeweelry/>}/>
+        <Route path='/login' element={<Login/>}/>
       </Routes>
-      <Footer/> 
     </div>
     </BrowserRouter>
   )

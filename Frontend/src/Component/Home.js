@@ -5,19 +5,17 @@ import { database } from "../firebaseConfig";
 import { Link } from "react-router-dom";
 import "../CSS/Home.css";
 import axios from "axios";
-
+import Women from "./Women";
 const HomeScreen = () => {
   const history = useNavigate();
   const [dress, setDress] = useState([]);
   const [jewellery, setJewellery] = useState([]);
-
   const handleClick = () => {
     signOut(database).then((val) => {
       console.log(val, "val");
       history("/");
     });
   };
-
   // const  addToCart=()=>{
   //   axios
   //   .post('/', {
@@ -31,7 +29,6 @@ const HomeScreen = () => {
   //     console.log(error);
   //   });
   // }
-
   const gettoimages = () => {
     axios
       .get("http://127.0.0.1:8000/dress/")
@@ -42,21 +39,20 @@ const HomeScreen = () => {
         console.log("Error fecthing data:", error);
       });
   };
-
   useEffect(() => {
     gettoimages();
     gettojewellery();
   }, []);
-
   const gettojewellery = () => {
-    axios.get("http://127.0.0.1:8000/jewellary/").then((response) => {
-      setJewellery(response.data);
-    })
-    .catch((error)=>{
-      console.log("Error fetching data:",error);
-    })
+    axios
+      .get("http://127.0.0.1:8000/jewellary/")
+      .then((response) => {
+        setJewellery(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
   };
-
   return (
     <>
       <div>
@@ -72,7 +68,6 @@ const HomeScreen = () => {
           alt="Banner 2"
         />
       </div>
-
       <div className="container">
         <div className="card">
           <img
@@ -89,20 +84,20 @@ const HomeScreen = () => {
           <h3>JEWELLERY</h3>
         </div>
       </div>
-
       {/* threee card img  POSHAKS*/}
       <div className="container1">
         <p className="p">POSHAKS</p>
+        <div
+          className="line-at-bot top-0"
+          style={{ background: "black", height: "1px", width: "20%" ,marginLeft:"520px"}}
+        ></div>
       </div>
+
       <div className="card1-container">
-        <div className="card1">
-          {dress.map((option) => {
-            debugger
-            // let baseURL = "http://127.0.0.1:8000/";
-            // let image = baseURL + option.image;
-            // debugger;
+        {dress.map((option) => {
+          if (option.type == "poshak") {
             return (
-              <li key={option.id}>
+              <div className="card1 " key={option.id}>
                 {option.image ? (
                   <img
                     src={`http://127.0.0.1:8000${option.image}`}
@@ -111,18 +106,47 @@ const HomeScreen = () => {
                 ) : (
                   <p>No image available</p>
                 )}
-                <div className="card1-text">{option.description}</div>
-
                 <div className="card1-text">{option.name}</div>
                 <div className="card1-text">{option.type}</div>
                 <div className="card1-text">{option.price}</div>
-              </li>
+              </div>
             );
-          })}
-        </div>
+          }
+          
+        })}
+      </div>
+      <div className="container1">
+        <p className="p">SAREE's</p>
+        <div
+          className="line-at-bot top-0"
+          style={{ background: "black", height: "1px", width: "20%" ,marginLeft:"520px"}}
+        ></div>
+      </div>
+      <div className="card1-container">
+        {dress.map((option) => {
+          if (option.type == "sare") {
+            
+            return (
+              <div className="card1 " key={option.id}>
+                {option.image ? (
+                  <img
+                    src={`http://127.0.0.1:8000${option.image}`}
+                    alt="Dress"
+                  />
+                ) : (
+                  <p>No image available</p>
+                )}
+                {/* <div className="card1-text">{option.name}</div> */}
+                <div className="card1-text">{option.type}</div>
+                <div className="card1-text">{option.price}</div>
+              </div>
+            );
+          }
+          
+        })}
       </div>
 
-      <div className="card1-container">
+      {/* <div className="card1-container">
         <div className="card1">
           <img
             src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2023-08-20-at-10002-pm-793575_m.jpeg?v=503"
@@ -147,14 +171,11 @@ const HomeScreen = () => {
           <div className="card1-text">SHASHI POSHAK</div>
           <div className="card1-text">₹1599.00</div>
         </div>
-      </div>
-
-      {/* threee card img RAJPUTI Suits*/}
-      <div className="container1">
+      </div> */}
+      {/* <div className="container1">
         <p className="p">RAJPUTI SUITS</p>
-      </div>
-
-      <div className="card1-container">
+      </div> */}
+      {/* <div className="card1-container">
         <div className="card1">
           <img
             src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2023-07-03-at-61308-pm-2-726151_m.jpeg?v=503"
@@ -179,14 +200,11 @@ const HomeScreen = () => {
           <div className="card1-text">MADHU SUIT</div>
           <div className="card1-text">₹2950.00</div>
         </div>
-      </div>
-
-      {/* threee card img Saree*/}
-      <div className="container1">
+      </div> */}
+      {/* <div className="container1">
         <p className="p">SAREE'S</p>
-      </div>
-
-      <div className="card1-container">
+      </div> */}
+      {/* <div className="card1-container">
         <div className="card1">
           <img
             src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2023-01-21-at-124205-pm-3-321395_m.jpeg?v=503"
@@ -211,49 +229,34 @@ const HomeScreen = () => {
           <div className="card1-text">NAVRANG SAREE</div>
           <div className="card1-text">₹675.00</div>
         </div>
-      </div>
-
+      </div> */}
       {/* threee card img Jewellery*/}
       <div className="container1">
         <p className="p">JEWELLERY</p>
+        <div
+          className="line-at-bot top-0"
+          style={{ background: "black", height: "1px", width: "20%" ,marginLeft:"520px"}}
+        ></div>
       </div>
 
       <div className="card1-container">
-        <div className="card1">
-          {jewellery.map((jewellery)=>{
-            return(
-              <>
-              <li><img src={jewellery.image}/></li>
-              </>
-            )
-
-          })}
-          {/* <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2022-12-26-at-10123-pm-754508_m.jpeg?v=503"
-            alt="Image 1"
-          />
-          <div className="card1-text">RAINA KANTHI SET</div>
-          <div className="card1-text">₹199.00</div> */}
-        </div>
-        {/* <div className="card1">
-          <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2022-12-23-at-51607-pm-560546_m.jpeg?v=503"
-            alt="Image 2"
-          />
-          <div className="card1-text">SOORAJ JADAU RING</div>
-          <div className="card1-text">₹149.00</div>
-        </div>
-        <div className="card1">
-          <img
-            src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/products/whatsapp-image-2022-12-23-at-51607-pm-560546_m.jpeg?v=503"
-            alt="Image 3"
-          />
-          <div className="card1-text">BINDI MEHRI</div>
-          <div className="card1-text">₹249.00</div>
-        </div> */}
+        {jewellery.map((jewellery) => {
+          return (
+            <div className="card1">
+              <div key={jewellery.id}>
+                <img
+                  src={`http://127.0.0.1:8000${jewellery.image}`}
+                  alt="Dress"
+                />
+                <div className="card1-text">{jewellery.category}</div>
+                <div className="card1-text">{jewellery.price}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
+      {/* <Women dress={dress}/> */}
     </>
   );
 };
-
 export default HomeScreen;

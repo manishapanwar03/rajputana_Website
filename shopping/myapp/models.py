@@ -43,4 +43,8 @@ class Jewellery(models.Model):
     image = models.ImageField(upload_to='jewellry/', null=True, blank=True)
     
     
- 
+
+from django.contrib.auth.models import AbstractUser
+
+class SingUser(AbstractUser):
+    pass

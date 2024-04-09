@@ -27,8 +27,9 @@ const HomeScreen = () => {
   //   })
   //   .catch(function (error) {
   //     console.log(error);
-  //   });
+  //   harrdhuts});
   // }
+
   const gettoimages = () => {
     axios
       .get("http://127.0.0.1:8000/dress/")
@@ -69,17 +70,17 @@ const HomeScreen = () => {
         />
       </div>
       <div className="container">
-        <div className="card">
+        <div className="card1">
           <img
             src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/categories/category-banner---half-poshaks---mobile-637854_s.png?v=503?1427392910"
             alt="Card 1"
           />
           <h3>HAMRAI POSHAKS</h3>
         </div>
-        <div className="card">
+        <div className="card1">
           <img
             src="https://cdn.shopaccino.com/ranisa-rajputi-fashion/categories/category-banner---jewellery-02-120890_s.png?v=503?1427392910"
-            alt="Card 2"
+            alt="Card 2"  
           />
           <h3>JEWELLERY</h3>
         </div>
